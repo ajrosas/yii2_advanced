@@ -23,3 +23,16 @@
     password: 123456
     ````
 
+### Other Settings
+
+1) Accessing Gii
+    * /backend/web/gii
+    * /frontend/web/gii
+
+2) Generate models for common folder
+    * Access either backend or frontend gii
+    * Click Model Generator
+    * Change namespace to ``` common\models ```
+        * Note: always checked ``` Use Table Prefix ``` to generate table prefix on models and to avoid errors
+            * ``` {{%table}} ``` percentage means prefix table 
+            * change table prefix in ``` common\config\main-local.php ``` tag name ``` tablePrefix ```
