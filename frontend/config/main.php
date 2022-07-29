@@ -17,12 +17,23 @@ return [
         ],
         'user' => [
             'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
         'session' => [
+            'class' => 'yii\web\DbSession',
+            'writeCallback' => function ($session) {  
+                return [ 
+                   'user_id' => Yii::$app->user->id, 
+                   'ip' => Yii::$app->request->getUserIp(),
+                ];
+            },
+            // 'timeout' => 60 * 60 * 24 * 30 * 1, //session expire
+            // 'sessionTable' => 'session', 
+
             // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
+            // 'name' => 'advanced-frontend',
+            'name' => 'advanced-backend', //to access same login user as backend
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
