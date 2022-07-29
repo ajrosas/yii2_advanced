@@ -26,7 +26,7 @@ class m220728_000943_create_role_table extends Migration
             'navigations' => $this->text(), // text for json representation
             'level' => $this->smallInteger()->unique(),
 
-            'status' => $this->smallInteger()->notNull()->defaultValue(10),
+            'record_status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->timestamp()->defaultValue(null)->defaultExpression('CURRENT_TIMESTAMP'), 
             'updated_at' => $this->timestamp()->defaultValue(null)->append('ON UPDATE CURRENT_TIMESTAMP'), 
         ], $tableOptions);

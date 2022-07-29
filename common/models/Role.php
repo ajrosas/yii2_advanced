@@ -13,7 +13,7 @@ use Yii;
  * @property string|null $role_access
  * @property string|null $navigations
  * @property int|null $level
- * @property int $status
+ * @property int $record_status
  * @property string|null $created_at
  * @property string|null $updated_at
  */
@@ -35,7 +35,7 @@ class Role extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['module_access', 'role_access', 'navigations'], 'string'],
-            [['level', 'status'], 'integer'],
+            [['level', 'record_status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
             [['name'], 'unique'],
@@ -55,7 +55,7 @@ class Role extends \yii\db\ActiveRecord
             'role_access' => 'Role Access',
             'navigations' => 'Navigations',
             'level' => 'Level',
-            'status' => 'Status',
+            'record_status' => 'Record Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

@@ -21,7 +21,7 @@ class m130524_201442_init extends Migration
             'password_reset_token' => $this->string()->unique(),
             'verification_token' => $this->string()->defaultValue(null), //added
 
-            'status' => $this->smallInteger()->notNull()->defaultValue(10),
+            'record_status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->timestamp()->defaultValue(null)->defaultExpression('CURRENT_TIMESTAMP'), // used current timestamp instead of integer
             'updated_at' => $this->timestamp()->defaultValue(null)->append('ON UPDATE CURRENT_TIMESTAMP'), // used current timestamp instead of integer
         ], $tableOptions);

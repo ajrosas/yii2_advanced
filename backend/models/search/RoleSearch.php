@@ -17,7 +17,7 @@ class RoleSearch extends Role
     public function rules()
     {
         return [
-            [['id', 'level', 'status'], 'integer'],
+            [['id', 'level', 'record_status'], 'integer'],
             [['name', 'module_access', 'role_access', 'navigations', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class RoleSearch extends Role
         $query->andFilterWhere([
             'id' => $this->id,
             'level' => $this->level,
-            'status' => $this->status,
+            'record_status' => $this->record_status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
