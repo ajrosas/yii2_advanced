@@ -32,8 +32,7 @@ return [
             // 'sessionTable' => 'session', 
 
             // this is the name of the session cookie used for login on the frontend
-            // 'name' => 'advanced-frontend',
-            'name' => 'advanced-backend', //to access same login user as backend
+            'name' => 'advanced-frontend',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -46,6 +45,12 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'assetManager' => [
+            'forceCopy' => false,
+            'linkAssets' => true,
+            'appendTimestamp' => false,
+            'class' => 'yii\web\AssetManager',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
