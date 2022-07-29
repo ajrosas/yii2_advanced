@@ -46,6 +46,32 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'assetManager' => [
+            'forceCopy' => false,
+            'linkAssets' => true,
+            'appendTimestamp' => false,
+            'class' => 'yii\web\AssetManager',
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'jsOptions' => ['position' => \yii\web\View::POS_HEAD],
+                    'sourcePath' => '@backend/themes/keen_demo_1/assets/assetsfiles/plugins/global/', // to access Keen Theme core resources
+                    'js' => ['plugins.bundle.js']
+                ],  
+                'yii\bootstrap4\BootstrapAsset' => [
+                    'sourcePath' => '@backend/themes/keen_demo_1/assets/assetsfiles/plugins/global/', // to access Keen Theme core resources
+                    'css' => ['plugins.bundle.css'],
+                ],
+            ]
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@backend/views' => [
+                        '@backend/themes/keen_demo_1/views', 
+                    ],
+                ],
+            ],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
