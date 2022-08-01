@@ -18,7 +18,7 @@ class RoleSearch extends Role
     {
         return [
             [['id', 'level', 'record_status'], 'integer'],
-            [['name', 'module_access', 'role_access', 'navigations', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'backend_module_access', 'frontend_module_access', 'role_access', 'backend_navigations', 'frontend_navigations', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -66,9 +66,11 @@ class RoleSearch extends Role
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'module_access', $this->module_access])
+            ->andFilterWhere(['like', 'backend_module_access', $this->backend_module_access])
+            ->andFilterWhere(['like', 'frontend_module_access', $this->frontend_module_access])
             ->andFilterWhere(['like', 'role_access', $this->role_access])
-            ->andFilterWhere(['like', 'navigations', $this->navigations]);
+            ->andFilterWhere(['like', 'backend_navigations', $this->backend_navigations])
+            ->andFilterWhere(['like', 'frontend_navigations', $this->frontend_navigations]);
 
         return $dataProvider;
     }
