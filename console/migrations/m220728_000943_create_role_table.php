@@ -21,9 +21,11 @@ class m220728_000943_create_role_table extends Migration
             'id' => $this->primaryKey(),
 
             'name' => $this->string()->notNull()->unique(),
-            'module_access' => $this->text(), // text for json representation
             'role_access' => $this->text(), // text for json representation
-            'navigations' => $this->text(), // text for json representation
+            'backend_module_access' => $this->text(), // text for json representation
+            'backend_navigations' => $this->text(), // text for json representation
+            'frontend_module_access' => $this->text(), // text for json representation
+            'frontend_navigations' => $this->text(), // text for json representation
             'level' => $this->smallInteger()->unique(),
 
             'record_status' => $this->smallInteger()->notNull()->defaultValue(10),
