@@ -215,4 +215,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(Role::className(), ['id' => 'role_id']);
     }
+    
+    public function getRoleNavigation($side='backend')
+    {
+        $side = $side."_navigations";
+        return json_decode($this->role->{$side}, true);
+    }
 }
