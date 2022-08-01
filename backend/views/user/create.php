@@ -11,10 +11,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="card card-custom gutter-b">
+        <div class="card-body">
+            <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </div>
+    </div>
 
 </div>

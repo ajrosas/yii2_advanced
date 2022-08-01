@@ -15,37 +15,49 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="role-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="card card-custom gutter-b">
+        <div class="card-header">
+            <div class="card-title">
+                <h1><?= Html::encode($this->title) ?></h1>
+            </div>
+            <div class="card-toolbar">
+                <?= Html::a('Create Role', ['create'], ['class' => 'btn btn-success']) ?>
+            </div>
+        </div>
+        <div class="card-body">
 
-    <p>
-        <?= Html::a('Create Role', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <div class="table-responsive">
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                        'id',
+                        'name',
+                        // 'backend_module_access:ntext',
+                        // 'backend_navigations:ntext',
+                        'role_access:ntext',
+                        // 'frontend_navigations:ntext',
+                        // 'frontend_module_access:ntext',
+                        'level',
+                        'record_status',
+                        'created_at',
+                        'updated_at',
+                        [
+                            'class' => ActionColumn::className(),
+                            'urlCreator' => function ($action, Role $model, $key, $index, $column) {
+                                return Url::toRoute([$action, 'id' => $model->id]);
+                             }
+                        ],
+                    ],
+                ]); ?>
+            </div>
 
-            'id',
-            'name',
-            'module_access:ntext',
-            'role_access:ntext',
-            'navigations:ntext',
-            //'level',
-            //'status',
-            //'created_at',
-            //'updated_at',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Role $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+        </div>
+    </div>
 
 
 </div>

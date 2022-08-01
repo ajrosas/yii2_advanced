@@ -14,15 +14,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'module_access')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'backend_module_access')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'frontend_module_access')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'role_access')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'navigations')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'backend_navigations')->textarea(['rows' => 6]) ?>
+    
+    <?= $form->field($model, 'frontend_navigations')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'level')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'record_status')->textInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

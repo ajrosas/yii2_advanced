@@ -19,15 +19,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'module_access') ?>
+    <?= $form->field($model, 'backend_module_access') ?>
+
+    <?= $form->field($model, 'frontend_module_access') ?>
 
     <?= $form->field($model, 'role_access') ?>
 
-    <?= $form->field($model, 'navigations') ?>
+    <?= $form->field($model, 'backend_navigations') ?>
+
+    <?= $form->field($model, 'frontend_navigations') ?>
 
     <?php // echo $form->field($model, 'level') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'record_status') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
