@@ -53,6 +53,8 @@ ThemeAsset::register($this);
                     <!--begin::Content-->
                     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
+                        <?= $this->render('sub_header') ?>
+
                         <div class="d-flex flex-column-fluid">
                             <div class="container">
                                 <?= Alert::widget() ?>
