@@ -8,6 +8,12 @@ return [
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
-        ],
+        ], 
+        'AccessControl' => [
+            'class' => 'common\components\AccessControl'
+        ], 
+        'Navigation' => [
+            'class' => 'common\components\Navigation'
+        ], 
     ],
 ];
