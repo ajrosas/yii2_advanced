@@ -56,116 +56,119 @@ $this->registerJs($_script);
 
 				<?php foreach(Yii::$app->user->identity->roleNavigation as $parent_key => $parent_navigation){?>
 
-					<?php if(is_array($parent_navigation['actions']) && !empty($parent_navigation['actions'])){ ?>
-						<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
-							<a href="javascript:;" class="menu-link menu-toggle">
-								<span class="svg-icon menu-icon">
-									<?= $parent_navigation['icon'] ?>
-								</span>
-								<span class="menu-text"><?= $parent_navigation['label'] ?></span>
-								<i class="menu-arrow"></i>
-							</a>
+					<?php if(isset($parent_navigation['actions'])){ ?>
+
+						<?php if(is_array($parent_navigation['actions']) && !empty($parent_navigation['actions'])){ ?>
+							<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+								<a href="javascript:;" class="menu-link menu-toggle">
+									<span class="svg-icon menu-icon">
+										<?= $parent_navigation['icon'] ?>
+									</span>
+									<span class="menu-text"><?= $parent_navigation['label'] ?></span>
+									<i class="menu-arrow"></i>
+								</a>
 
 
-								<div class="menu-submenu menu-submenu-classic menu-submenu-left">
-									<ul class="menu-subnav">
+									<div class="menu-submenu menu-submenu-classic menu-submenu-left">
+										<ul class="menu-subnav">
 
-										<?php foreach($parent_navigation['actions'] as $child_key => $child_navigation){ ?>
+											<?php foreach($parent_navigation['actions'] as $child_key => $child_navigation){ ?>
 
-											<?php if(is_array($child_navigation['actions']) && !empty($child_navigation['actions'])){ ?>
+												<?php if(is_array($child_navigation['actions']) && !empty($child_navigation['actions'])){ ?>
 
-												<li class="menu-item menu-item-submenu <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation['url']) ? 'menu-item-open menu-item-here' : '' ?>" data-menu-toggle="hover" aria-haspopup="true">
-													<a href="javascript:;" class="menu-link menu-toggle">
-														<span class="svg-icon menu-icon">
-															<?= $child_navigation['icon'] ?>
-														</span>
-														<span class="menu-text"><?= $child_navigation['label'] ?></span>
-														<i class="menu-arrow"></i>
-													</a>
-													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
-														<ul class="menu-subnav">
+													<li class="menu-item menu-item-submenu <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation['url']) ? 'menu-item-open menu-item-here' : '' ?>" data-menu-toggle="hover" aria-haspopup="true">
+														<a href="javascript:;" class="menu-link menu-toggle">
+															<span class="svg-icon menu-icon">
+																<?= $child_navigation['icon'] ?>
+															</span>
+															<span class="menu-text"><?= $child_navigation['label'] ?></span>
+															<i class="menu-arrow"></i>
+														</a>
+														<div class="menu-submenu menu-submenu-classic menu-submenu-right">
+															<ul class="menu-subnav">
 
-															<?php foreach($child_navigation['actions'] as $child_key_2 => $child_navigation_2){ ?>
+																<?php foreach($child_navigation['actions'] as $child_key_2 => $child_navigation_2){ ?>
 
-																<?php if(is_array($child_navigation_2['actions']) && !empty($child_navigation_2['actions'])){ ?>
+																	<?php if(is_array($child_navigation_2['actions']) && !empty($child_navigation_2['actions'])){ ?>
 
-																	<li class="menu-item menu-item-submenu <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation_2['url']) ? 'menu-item-open menu-item-here' : '' ?>" data-menu-toggle="hover" aria-haspopup="true">
-																		<a href="javascript:;" class="menu-link menu-toggle">
-																			<i class="menu-bullet menu-bullet-dot">
-																				<span></span>
-																			</i>
-																			<span class="menu-text"><?= $child_navigation_2['label'] ?></span>
-																			<i class="menu-arrow"></i>
-																		</a>
-																		<div class="menu-submenu menu-submenu-classic menu-submenu-right">
-																			<ul class="menu-subnav">
-																				<?php foreach($child_navigation_2['actions'] as $child_key_3 => $child_navigation_3){ ?>
-																					<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation_3['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-																						<a href="<?= (filter_var($child_navigation_3['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$child_navigation_3['url']]) : $child_navigation_3['url'] ?>" class="menu-link">
-																							<i class="menu-bullet menu-bullet-line">
-																								<span></span>
-																							</i>
-																							<span class="menu-text"><?= $child_navigation_3['label'] ?></span>
-																						</a>
-																					</li>
-																				<?php } ?>
-																			</ul>
-																		</div>
-																	</li>
+																		<li class="menu-item menu-item-submenu <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation_2['url']) ? 'menu-item-open menu-item-here' : '' ?>" data-menu-toggle="hover" aria-haspopup="true">
+																			<a href="javascript:;" class="menu-link menu-toggle">
+																				<i class="menu-bullet menu-bullet-dot">
+																					<span></span>
+																				</i>
+																				<span class="menu-text"><?= $child_navigation_2['label'] ?></span>
+																				<i class="menu-arrow"></i>
+																			</a>
+																			<div class="menu-submenu menu-submenu-classic menu-submenu-right">
+																				<ul class="menu-subnav">
+																					<?php foreach($child_navigation_2['actions'] as $child_key_3 => $child_navigation_3){ ?>
+																						<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation_3['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+																							<a href="<?= (filter_var($child_navigation_3['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$child_navigation_3['url']]) : $child_navigation_3['url'] ?>" class="menu-link">
+																								<i class="menu-bullet menu-bullet-line">
+																									<span></span>
+																								</i>
+																								<span class="menu-text"><?= $child_navigation_3['label'] ?></span>
+																							</a>
+																						</li>
+																					<?php } ?>
+																				</ul>
+																			</div>
+																		</li>
 
-																<?php }else{ ?>
+																	<?php }else{ ?>
 
-																	<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation_2['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-																		<a href="<?= (filter_var($child_navigation_2['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$child_navigation_2['url']]) : $child_navigation_2['url'] ?>" class="menu-link">
-																			<i class="menu-bullet menu-bullet-dot">
-																				<span></span>
-																			</i>
-																			<span class="menu-text"><?= $child_navigation_2['label'] ?></span>
-																		</a>
-																	</li>
-																	
+																		<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation_2['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+																			<a href="<?= (filter_var($child_navigation_2['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$child_navigation_2['url']]) : $child_navigation_2['url'] ?>" class="menu-link">
+																				<i class="menu-bullet menu-bullet-dot">
+																					<span></span>
+																				</i>
+																				<span class="menu-text"><?= $child_navigation_2['label'] ?></span>
+																			</a>
+																		</li>
+																		
+																	<?php } ?>
+
 																<?php } ?>
 
-															<?php } ?>
+															</ul>
+														</div>
+													</li>
 
-														</ul>
-													</div>
-												</li>
+												<?php }else{ ?>
 
-											<?php }else{ ?>
+													<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+														<a href="<?= (filter_var($child_navigation['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$child_navigation['url']]) : $child_navigation['url'] ?>" class="menu-link">
+															<span class="svg-icon menu-icon">
+																<?= $child_navigation['icon'] ?>
+															</span>
+															<span class="menu-text"><?= $child_navigation['label'] ?></span>
+														</a>
+													</li>
 
-												<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($child_navigation['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-													<a href="<?= (filter_var($child_navigation['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$child_navigation['url']]) : $child_navigation['url'] ?>" class="menu-link">
-														<span class="svg-icon menu-icon">
-															<?= $child_navigation['icon'] ?>
-														</span>
-														<span class="menu-text"><?= $child_navigation['label'] ?></span>
-													</a>
-												</li>
+												<?php } ?>
 
 											<?php } ?>
 
-										<?php } ?>
 
+										</ul>
+									</div>
 
-									</ul>
-								</div>
+							</li>
 
-						</li>
+						<?php }else{ ?>
 
-					<?php }else{ ?>
+							<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($parent_navigation['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
+								<a href="<?= (filter_var($parent_navigation['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$parent_navigation['url']]) : $parent_navigation['url'] ?>" class="menu-link">
+									<span class="svg-icon menu-icon">
+										<?= $parent_navigation['icon'] ?>
+									</span>
+									<span class="menu-text"><?= $parent_navigation['label'] ?></span>
+								</a>
+							</li>
 
-						<li class="menu-item <?= Yii::$app->Navigation->checkActiveNavigation($parent_navigation['url'], 'exact') ? 'menu-item-active' : '' ?>" aria-haspopup="true">
-							<a href="<?= (filter_var($parent_navigation['url'], FILTER_VALIDATE_URL) == false) ? Url::to(['/'.$parent_navigation['url']]) : $parent_navigation['url'] ?>" class="menu-link">
-								<span class="svg-icon menu-icon">
-									<?= $parent_navigation['icon'] ?>
-								</span>
-								<span class="menu-text"><?= $parent_navigation['label'] ?></span>
-							</a>
-						</li>
+						<?php } ?>
 
 					<?php } ?>
-
 
 				<?php } ?>
 
