@@ -69,6 +69,9 @@ return [
                     '@backend/views' => [
                         '@backend/themes/keen_demo_1/views', 
                     ],
+                    '@backend/widgets' => [
+                        '@backend/themes/keen_demo_1/widgets', 
+                    ],
                 ],
             ],
         ],
