@@ -12,18 +12,15 @@ use common\models\Role;
 
 $this->title = 'Roles';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->params['toolbar_actions'] = [
+    Html::a('Create Role', ['create'], ['class' => 'btn btn-success']),
+];
+
 ?>
 <div class="role-index">
 
     <div class="card card-custom gutter-b">
-        <div class="card-header">
-            <div class="card-title">
-                <h1><?= Html::encode($this->title) ?></h1>
-            </div>
-            <div class="card-toolbar">
-                <?= Html::a('Create Role', ['create'], ['class' => 'btn btn-success']) ?>
-            </div>
-        </div>
         <div class="card-body">
 
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
